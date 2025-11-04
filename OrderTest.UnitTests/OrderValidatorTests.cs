@@ -14,7 +14,12 @@ public class OrderValidatorTests
     [InlineData(999)]
     public void IsValidId_ShouldReturnTrue_ForPositiveIds(int id)
     {
+        // Arrange done in constructor
+
+        // Act
         var result = _validator.IsValidId(id);
+
+        // Assert
         result.Should().BeTrue();
     }
 
@@ -24,7 +29,10 @@ public class OrderValidatorTests
     [InlineData(-100)]
     public void IsValidId_ShouldReturnFalse_ForZeroOrNegativeIds(int id)
     {
+        // Act
         var result = _validator.IsValidId(id);
+
+        // Assert
         result.Should().BeFalse();
     }
 
@@ -34,7 +42,10 @@ public class OrderValidatorTests
     [InlineData("Zamówienie testowe")]
     public void IsValidDescription_ShouldReturnTrue_ForValidDescriptions(string description)
     {
+        // Act
         var result = _validator.IsValidDescription(description);
+
+        // Assert
         result.Should().BeTrue();
     }
 
@@ -44,23 +55,36 @@ public class OrderValidatorTests
     [InlineData("   ")]
     public void IsValidDescription_ShouldReturnFalse_ForNullOrWhitespace(string? description)
     {
+        // Act
         var result = _validator.IsValidDescription(description);
+
+        // Assert
         result.Should().BeFalse();
     }
 
     [Fact]
     public void IsValidDescription_ShouldReturnFalse_WhenDescriptionExceeds200Characters()
     {
+        // Arrange
         var longDescription = new string('x', 201);
+
+        // Act
         var result = _validator.IsValidDescription(longDescription);
+
+        // Assert
         result.Should().BeFalse();
     }
 
     [Fact]
     public void IsValidDescription_ShouldReturnTrue_WhenDescriptionIsExactly200Characters()
     {
+        // Arrange
         var exactDescription = new string('x', 200);
+
+        // Act
         var result = _validator.IsValidDescription(exactDescription);
+
+        // Assert
         result.Should().BeTrue();
     }
 }
