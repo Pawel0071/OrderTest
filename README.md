@@ -15,13 +15,12 @@ OrderTest to aplikacja konsolowa w .NET 8.0 służąca do zarządzania zamówien
     
 ## ⚙️ Wymagania
 
-    - [.NET 8.0 SDK](https://dotnet.microsoft.com/en-us/download)
+  - [.NET 8.0 SDK](https://dotnet.microsoft.com/en-us/download)
   - Visual Studio / VS Code / Rider
   - System operacyjny: Windows, macOS, Linux
 
 ## 🚀 Uruchomienie
     
-    dotnet run
     
 1. Sklonuj repozytorium:
 
@@ -29,3 +28,39 @@ OrderTest to aplikacja konsolowa w .NET 8.0 służąca do zarządzania zamówien
 git clone https://github.com/twoje-konto/OrderTest.git
 cd OrderTest
 ```
+2. Upewnij się, że plik appsettings.json istnieje i ma ustawione kopiowanie do katalogu wyjściowego:
+
+```
+{
+  "Logging": {
+    "LogLevel": "Information"
+  }
+}
+```
+
+3. Uruchom aplikację:
+
+'''
+    dotnet run
+'''
+
+## 🛠️ Konfiguracja logowania
+
+Poziom logowania jest definiowany w appsettings.json:
+
+```
+{
+  "Logging": {
+    "LogLevel": "Information" // Możliwe: Trace, Debug, Information, Warning, Error, Critical, None
+  }
+}
+```
+
+✅ Funkcje
+
+  - Dodawanie, aktualizacja, usuwanie i przetwarzanie zamówień
+  - Walidacja danych przez IOrderValidator
+  - Obsługa wyjątków: ArgumentException, KeyNotFoundException
+  - Synchronizacja dostępu do zamówień przez SemaphoreSlim
+  - Konfigurowalny poziom logowania
+  - Architektura zgodna z zasadami Clean Architecture
