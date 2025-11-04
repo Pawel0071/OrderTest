@@ -40,8 +40,9 @@ cd OrderTest
 
 3. Uruchom aplikację:
 
-'''dotnet run
-'''
+```
+dotnet run
+```
 
 ## 🛠️ Konfiguracja logowania
 
