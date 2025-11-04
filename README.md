@@ -66,4 +66,4 @@ Poziom logowania jest definiowany w appsettings.json:
   - Architektura zgodna z zasadami Clean Architecture
 
 ## ISSUES:
-- [Unit Test Error} (https://github.com/Pawel0071/OrderTest/issues/1)
+- [Unit Test Error](https://github.com/Pawel0071/OrderTest/issues/1)
