@@ -1,0 +1,10 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=ac315a35_002D05b2_002D4e8e_002D9de8_002D35f265dab8da/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="All tests from OrderRepositoryTests.cs" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;Or&gt;
+    &lt;ProjectFile&gt;A612F697-7CA1-44AD-A81C-8A95F565A626/f:OrderRepositoryTests.cs&lt;/ProjectFile&gt;
+    &lt;ProjectFile&gt;A612F697-7CA1-44AD-A81C-8A95F565A626/f:OrderServiceTest.cs&lt;/ProjectFile&gt;
+  &lt;/Or&gt;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=c8efe2d1_002Db152_002D4f0c_002Da65b_002D127b2828c31a/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="AddOrderAsync_ShouldReturnMinusOne_WhenInvalid" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;Project Location="/Volumes/Data/Repositories/PowerConsuptionCalculator/OrderTest/OrderTest.UnitTests" Presentation="&amp;lt;OrderTest.UnitTests&amp;gt;" /&gt;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
