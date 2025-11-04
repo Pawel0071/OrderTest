@@ -64,3 +64,6 @@ Poziom logowania jest definiowany w appsettings.json:
   - Synchronizacja dostępu do zamówień przez SemaphoreSlim
   - Konfigurowalny poziom logowania
   - Architektura zgodna z zasadami Clean Architecture
+
+## ISSUES:
+- [Unit Test Error} (https://github.com/Pawel0071/OrderTest/issues/1)
