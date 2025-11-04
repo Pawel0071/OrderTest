@@ -1,17 +1,16 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Configuration;
-using OrderTest.Configuration;
-using OrderTest.Interfaces;
 using OrderTest.Application;
-using OrderTest.Domain;
+using OrderTest.Configuration;
 using OrderTest.Infrastructure;
+using OrderTest.Interfaces;
 using OrderTest.Repositories;
 
-static class Program
+namespace OrderTest;
+
+internal static class Program
 {
-    static async Task Main(string[] args)
+    private static async Task Main(string[] args)
     {
         Console.WriteLine("Order Processing System");
 

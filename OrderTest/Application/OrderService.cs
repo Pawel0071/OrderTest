@@ -1,7 +1,5 @@
-using OrderTest.Interfaces;
-using System;
 using System.Collections.Concurrent;
-using System.Threading.Tasks;
+using OrderTest.Interfaces;
 
 namespace OrderTest.Application;
 
