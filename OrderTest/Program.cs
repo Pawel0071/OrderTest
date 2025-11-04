@@ -29,6 +29,7 @@ static class Program
         services.AddSingleton<IOrderValidator, OrderValidator>();
         services.AddSingleton<IOrderRepository, OrderRepository>();
         services.AddSingleton<IOrderService, OrderService>();
+        services.AddSingleton<INotificationService, ConsoleNotificationService>();
 
         var serviceProvider = services.BuildServiceProvider();
 
