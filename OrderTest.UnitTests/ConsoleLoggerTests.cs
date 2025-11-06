@@ -12,11 +12,20 @@ public class ConsoleLoggerTests
     {
         // Arrange
         var logger = new ConsoleLogger(configuredLevel);
-        var output = new StringWriter();
-        Console.SetOut(output);
+        using var output = new StringWriter();
+        var originalOut = Console.Out;
+        try
+        {
+            Console.SetOut(output);
 
-        // Act
-        logger.LogInfo("Test info message");
+            // Act
+            logger.LogInfo("Test info message");
+        }
+        finally
+        {
+            // Restore
+            Console.SetOut(originalOut);
+        }
 
         // Assert
         var consoleOutput = output.ToString();
@@ -38,11 +47,20 @@ public class ConsoleLoggerTests
     {
         // Arrange
         var logger = new ConsoleLogger(configuredLevel);
-        var output = new StringWriter();
-        Console.SetOut(output);
+        using var output = new StringWriter();
+        var originalOut = Console.Out;
+        try
+        {
+            Console.SetOut(output);
 
-        // Act
-        logger.LogError("Test error message");
+            // Act
+            logger.LogError("Test error message");
+        }
+        finally
+        {
+            // Restore
+            Console.SetOut(originalOut);
+        }
 
         // Assert
         var consoleOutput = output.ToString();
@@ -62,13 +80,22 @@ public class ConsoleLoggerTests
     {
         // Arrange
         var logger = new ConsoleLogger("Error");
-        var output = new StringWriter();
-        Console.SetOut(output);
-
+        using var output = new StringWriter();
+        var originalOut = Console.Out;
         var ex = new InvalidOperationException("Something went wrong");
 
-        // Act
-        logger.LogError("Error with exception", ex);
+        try
+        {
+            Console.SetOut(output);
+
+            // Act
+            logger.LogError("Error with exception", ex);
+        }
+        finally
+        {
+            // Restore
+            Console.SetOut(originalOut);
+        }
 
         // Assert
         var consoleOutput = output.ToString();

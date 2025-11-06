@@ -1,5 +1,7 @@
 # 🧾 OrderTest
 
+[![.NET CI](https://github.com/Pawel0071/OrderTest/actions/workflows/dotnet.yml/badge.svg)](https://github.com/Pawel0071/OrderTest/actions/workflows/dotnet.yml)
+
 OrderTest to aplikacja konsolowa w .NET 8.0 służąca do zarządzania zamówieniami w pamięci. Projekt demonstruje architekturę warstwową, walidację danych, obsługę wyjątków, logowanie oraz wykorzystanie Dependency Injection.
 
 ## 🧱 Struktura projektu

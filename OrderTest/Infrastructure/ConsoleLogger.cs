@@ -14,7 +14,7 @@ public class ConsoleLogger(string level) : ILogger
         }
     }
 
-    public void LogError(string message, Exception ex = null)
+    public void LogError(string message, Exception? ex = null)
     {
         if (IsEnabled("Error"))
         {
