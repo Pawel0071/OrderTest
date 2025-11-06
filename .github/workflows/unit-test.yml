@@ -21,7 +21,7 @@ jobs:
         run: dotnet restore OrderTest.sln
 
       - name: Build
-        run: dotnet build DOrderTest.sln --no-restore --configuration Release
+        run: dotnet build OrderTest.sln --no-restore --configuration Release
 
       - name: Run tests
         # ensure test runner uses the same configuration/output as the build step
