@@ -14,14 +14,14 @@ internal static class Program
     {
         Console.WriteLine("Order Processing System");
 
-        // 📦 Wczytanie konfiguracji z appsettings.json
+        // Wczytanie konfiguracji z appsettings.json
         var configuration = new ConfigurationBuilder()
             .AddJsonFile("appsettings.json", optional: false)
             .Build();
 
         var appConfig = configuration.Get<AppConfig>();
         
-        // 🔧 Konfiguracja kontenera DI
+        // Konfiguracja kontenera DI
         var services = new ServiceCollection();
 
         services.AddSingleton<ILogger>(sp => new ConsoleLogger(appConfig?.Logging.LogLevel ?? "Trace"));
@@ -32,13 +32,13 @@ internal static class Program
 
         var serviceProvider = services.BuildServiceProvider();
 
-        // 🔄 Pobranie serwisu
+        // Pobranie serwisu
         var orderService = serviceProvider.GetRequiredService<IOrderService>();
 
-        // 🧪 Inicjalizacja repozytorium
+        // Inicjalizacja repozytorium
         await orderService.InitInMemoryRepositoryAsync();
 
-        // 🧵 Przetwarzanie zamówień
+        // Przetwarzanie zamówień
         var processingTasks = new[]
         {
             orderService.ProcessOrderAsync(1),
@@ -49,7 +49,7 @@ internal static class Program
 
         await Task.WhenAll(processingTasks);
 
-        // ➕ Dodawanie nowych zamówień i przetwarzanie
+        // Dodawanie nowych zamówień i przetwarzanie
         var addAndProcessTasks = new[]
         {
             orderService.AddOrderAsync("Słuchawki"),
