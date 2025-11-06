@@ -1,24 +1,24 @@
-using OrderTest.Interfaces;
-using System;
 using System.Collections.Concurrent;
-using System.Threading.Tasks;
+using OrderTest.Interfaces;
 
 namespace OrderTest.Application;
 
-public class OrderService(IOrderRepository repository, ILogger logger, IOrderValidator validator)
+public class OrderService(IOrderRepository repository, ILogger logger, IOrderValidator validator,  INotificationService notificationService)
     : IOrderService
 {
     private readonly IOrderValidator _validator = validator;
 
     private static readonly ConcurrentDictionary<int, SemaphoreSlim> OrderLocks = new();
+    private static readonly SemaphoreSlim AddOrderLock = new(1, 1);
 
     public async Task ProcessOrderAsync(int orderId)
     {
         var semaphore = OrderLocks.GetOrAdd(orderId, _ => new SemaphoreSlim(1, 1));
-
         logger.LogInfo($"Attempting to process order {orderId}");
 
         await semaphore.WaitAsync();
+        bool success = false;
+
         try
         {
             logger.LogInfo($"Processing order {orderId} on thread {Task.CurrentId}");
@@ -32,6 +32,7 @@ public class OrderService(IOrderRepository repository, ILogger logger, IOrderVal
             }
 
             logger.LogInfo($"Order retrieved: {orderDetails}");
+            success = true;
         }
         catch (ArgumentException argEx)
         {
@@ -50,6 +51,11 @@ public class OrderService(IOrderRepository repository, ILogger logger, IOrderVal
             semaphore.Release();
             OrderLocks.TryRemove(orderId, out _);
             logger.LogInfo($"Finished processing order {orderId}");
+
+            if (success)
+            {
+                notificationService.Send(orderId, "Order processed successfully.");
+            }
         }
     }
 
@@ -69,10 +75,12 @@ public class OrderService(IOrderRepository repository, ILogger logger, IOrderVal
 
     public async Task<int> AddOrderAsync(string description)
     {
+        await AddOrderLock.WaitAsync();
         try
         {
             int orderId = await repository.AddOrderAsync(description);
             logger.LogInfo($"Order successfully added with ID: {orderId}");
+            notificationService.Send(orderId, "Order added successfully.");
             return orderId;
         }
         catch (ArgumentException argEx)
@@ -84,6 +92,10 @@ public class OrderService(IOrderRepository repository, ILogger logger, IOrderVal
         {
             logger.LogError("Unexpected error while adding order.", ex);
             return -1;
+        }
+        finally
+        {
+            AddOrderLock.Release();
         }
     }
 }

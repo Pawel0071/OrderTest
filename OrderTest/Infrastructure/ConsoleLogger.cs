@@ -2,8 +2,6 @@ using OrderTest.Interfaces;
 
 namespace OrderTest.Infrastructure;
 
-using System;
-
 public class ConsoleLogger(string level) : ILogger
 {
     public void LogInfo(string message)
